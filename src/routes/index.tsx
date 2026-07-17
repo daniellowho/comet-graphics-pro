@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Link } from "@tanstack/react-router";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import {
@@ -25,22 +26,55 @@ function Index() {
   return (
     <div className="scroll-smooth">
       {/* HERO */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-secondary/60 to-background">
-        <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 md:px-8 md:py-24 lg:grid-cols-2 lg:items-center">
+      <section className="relative overflow-hidden mesh-gradient-hero">
+        <div className="pointer-events-none absolute inset-0 overflow-hidden">
+          <motion.div
+            animate={{ x: [0, 30, 0], y: [0, -20, 0] }}
+            transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute -top-32 -left-32 h-96 w-96 rounded-full bg-accent/20 blur-[100px]"
+          />
+          <motion.div
+            animate={{ x: [0, -40, 0], y: [0, 30, 0] }}
+            transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute top-1/3 -right-24 h-80 w-80 rounded-full bg-primary/30 blur-[90px]"
+          />
+        </div>
+
+        <div className="relative mx-auto grid max-w-7xl gap-10 px-4 py-16 md:px-8 md:py-24 lg:grid-cols-2 lg:items-center">
           <div>
-            <span className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-xs font-medium text-primary">
+            <motion.span
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.5 }}
+              className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-xs font-medium text-primary"
+            >
               <ShieldCheck className="h-3.5 w-3.5" /> Trusted since 1999
-            </span>
-            <h1 className="mt-4 text-4xl font-extrabold leading-tight tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+            </motion.span>
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.35, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+              className="mt-4 text-4xl font-extrabold leading-tight tracking-tight text-foreground sm:text-5xl lg:text-6xl"
+            >
               Your Trusted Partner for{" "}
               <span className="text-primary">Promotional Products</span> Since 1999
-            </h1>
-            <p className="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5, duration: 0.5 }}
+              className="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg"
+            >
               Corporate gifts, apparel, and printing solutions crafted with
               quality, delivered on time, across India for over 25 years.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Button asChild size="lg">
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.65, duration: 0.5 }}
+              className="mt-8 flex flex-wrap gap-3"
+            >
+              <Button asChild size="lg" className="animate-pulse-glow">
                 <Link to="/products">
                   Browse Products <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
@@ -48,29 +82,36 @@ function Index() {
               <Button asChild size="lg" variant="outline">
                 <Link to="/contact">Request a Quote</Link>
               </Button>
-            </div>
+            </motion.div>
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.4, duration: 0.6 }}
+            className="grid grid-cols-2 gap-4"
+          >
             <img
               src="https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?auto=format&fit=crop&w=800&q=80"
               alt="Branded coffee mug"
-              className="col-span-1 row-span-2 h-full w-full rounded-2xl object-cover shadow-lg"
+              className="col-span-1 row-span-2 h-full w-full rounded-2xl object-cover shadow-lg animate-float"
               loading="lazy"
             />
             <img
               src="https://images.unsplash.com/photo-1567427017947-545c5f8d16ad?auto=format&fit=crop&w=800&q=80"
               alt="Brass trophy"
-              className="h-40 w-full rounded-2xl object-cover shadow-lg sm:h-52"
+              className="h-40 w-full rounded-2xl object-cover shadow-lg sm:h-52 animate-float"
+              style={{ animationDelay: "1s" }}
               loading="lazy"
             />
             <img
               src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?auto=format&fit=crop&w=800&q=80"
               alt="Branded polo t-shirt"
-              className="h-40 w-full rounded-2xl object-cover shadow-lg sm:h-52"
+              className="h-40 w-full rounded-2xl object-cover shadow-lg sm:h-52 animate-float"
+              style={{ animationDelay: "2s" }}
               loading="lazy"
             />
-          </div>
+          </motion.div>
         </div>
 
         {/* Trust bar */}
